@@ -9,6 +9,8 @@ mkdir -p /work/artifact
 
 # HPN_SSH openssh
 cd $WORKSPACE
+git clone https://github.com/rapier1/hpn-ssh
+cd hpn-ssh
 autoreconf -f -i
 ./configure --prefix=/usr/local/hpnsshmm --sysconfdir=/usr/local/hpnsshmm/etc/ssh --without-pam --with-privsep-path=/usr/local/hpnsshmm/lib/sshd/ --with-pid-dir=/usr/local/hpnsshmm/run --with-mantype=man --with-libedit --with-ldns
 sed -i 's@LDFLAGS=@LDFLAGS=-static -no-pie -s @g'  ./Makefile
